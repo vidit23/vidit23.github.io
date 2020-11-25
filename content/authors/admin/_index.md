@@ -1,37 +1,34 @@
 ---
 # Display name
-title: Nelson Bighetti
+title: Vidit Bhargava
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: Student
 
 # Organizations/Affiliations
 organizations:
-- name: Stanford University
-  url: ""
+- name: New York University
+  url: https://cs.nyu.edu/home/index.html
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests include distributed systems,  and programmable matter.
 
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Distributed Systems
+- Micro-service architecture
+- Big Data
 
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: M.S. in Information Sytems
+    institution: New York University
+    year: 2021
+  - course: B.Tech. in Computer Science
+    institution: National Institute of Technology, Karnataka
+    year: 2017
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -40,21 +37,18 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: '/#contact'  # For a direct email link, use "mailto:test@example.org".
-- icon: twitter
+  link: 'mailto:viditvineet@hotmail.com'  # For a direct email link, use "mailto:test@example.org".
+- icon: linkedin
   icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
-- icon: google-scholar
-  icon_pack: ai
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://www.linkedin.com/in/vidit23/
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/vidit23
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
-# - icon: cv
-#   icon_pack: ai
-#   link: files/cv.pdf
+- icon: cv
+  icon_pack: ai
+  link: files/cv.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: ""
@@ -68,7 +62,10 @@ user_groups:
 - Researchers
 - Visitors
 ---
+I am a backend engineer with a keen interest in building a bridge between Computer Science, Business, and Consumer Psychology. 
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+I grew up in Dubai, completed my undergrad in India, and currently, I am living in New York pursuing my Master's at NYU. 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+In my free time, you can catch me cooking, baking (my cookies have a notorious habit of coming out as cakes) or walking around the city. 
+
+<!-- Having lived in such diverse countries, I carry seen technology trancend socio-economic barriers in such diverse countries, I believe it holds the power to bring far-reaching change. I like to identify pain points and construct creative solutions.  -->

@@ -18,27 +18,23 @@ date_format = "Jan 2006"
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 [[experience]]
-  title = "CEO"
-  company = "GenCoin"
+  title = "Software Engineering Intern"
+  company = "Uber"
   company_url = ""
-  location = "California"
-  date_start = "2017-01-01"
-  date_end = ""
+  location = "San Francisco, California"
+  date_start = "2020-05-26"
+  date_end = "2020-08-14"
   description = """
-  Responsibilities include:
-  
-  * Analysing
-  * Modelling
-  * Deploying
+  Built a feature that converts messy free-form driver requirements into a readable checklist to prevent incorrect bookings. I gained exposure to how large companies conceptualize/build features, handle infrastructure and manage collaboration.
   """
 
 [[experience]]
-  title = "Professor"
-  company = "University X"
+  title = "Backend Engineer"
+  company = "Samsung Research"
   company_url = ""
-  location = "California"
-  date_start = "2016-01-01"
-  date_end = "2016-12-31"
-  description = """Taught electronic engineering and researched semiconductor physics."""
+  location = "Bangalore, India"
+  date_start = "2017-06-08"
+  date_end = "2019-07-07"
+  description = """Part of a small team which converted a proof of concept to an application serving 4 million daily active users. I was responsible for building APIs, recommendation systems, feature extraction systems, Data Analytics pipelines. I gained experience building and managing a scalable low-latency tech stack and software architecture. Moreover, I worked closely with the product management team and gained insights on product strategy, ideation and vision."""
 
 +++
