@@ -3,20 +3,24 @@ title: Remembering The Past
 summary: Finding the minimal subset to counteract the effect of Catastrophic Forgetting
 tags:
 - Deep Learning
-date: "2016-04-27T00:00:00Z"
+- NLP
+- BERT
+- Catastrophic Forgetting
+- SQuAD
+date: "2020-11-22T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).
 external_link: ""
 
 image:
-  caption: Photo by rawpixel on Unsplash
+  caption: ""
   focal_point: Smart
 
 links:
-- icon: twitter
+- icon: github
   icon_pack: fab
-  name: Follow
-  url: https://twitter.com/georgecushen
+  name: Code Repository
+  url: https://github.com/vidit23/Remembering-the-past
 url_code: ""
 url_pdf: ""
 url_slides: ""
@@ -29,13 +33,26 @@ url_video: ""
 #   Otherwise, set `slides = ""`.
 slides: example
 ---
+The idea of this project came to me while studying for the NLP mid-term. Going back to what was taught in class, I realized that I had forgotten most of the content. Luckily I had made notes which I could go back to for a quick refresher. Reading the [paper](https://arxiv.org/pdf/1612.00796.pdf) made me wonder if I could do the same for Neural Networks. Could we possibily find the smallest subset of the training data to make the network remember what it had learned in the past?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.
+We also found papers which:
+* [Distill Data](https://arxiv.org/pdf/1811.10959.pdf) inspired by model distillation to reduce the size of the dataset by compressing information of each class in fewer images
+* [Localize learning](https://arxiv.org/pdf/1906.01076.pdf) by taking a base model and retraining on similar examples from the dataset to get better accuracy on the test set.
 
-Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.
+We experimented with:
+* [HuggingFace transformers library](https://github.com/huggingface/transformers/tree/master/examples/question-answering) which has a pretrained BERT-base model and a script to retrain it.
+* [MRQA dataset](https://github.com/mrqa/MRQA-Shared-Task-2019) which is a compilation of different Question-Answering datasets converted to a uniform format.
 
-Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.
+To test our hypothesis, we first trained the model on single datasets and tested it on the evaluation sets of different datasets to see how well it generalizes. Second, we used the models generated in the first step and finetuned them on a secondary dataset and checked their performance on the evaluation set of the first dataset to test for forgetting. 
+An example can be found in the table:
 
-Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.
+|Datasets|SQuAD Accuracy|SQuAD f1| NewsQA Accuracy|NewsQA f1|
+|:--------:|:------:|:---:|:--------:|:---:|
+|SQuAD|81.3|88.5|40.5|56.8|
+|NewsQA|61.35|76.32|52.11|66.3|
+|SQuAD -> NewsQA|66.29|80.32|52.84|67.13|
+|NewsQA -> SQuAD|81.09|88.5|46.2|61.92|
 
-Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.
+It is clear that the model forgets on continual training on different datasets. To combat this we proposed an intelligent selection method from the dataset. We can generate context+question embeddings using a BERT model and cluster them using Agglomerative clustering. We could then pick cluster representative data-points and use them to retrain the model; essentially creating a smaller dataset which replicates the information in the original dataset. This would allow faster retraining and lesser forgetting. As a baseline, we compared our methodolgy against:
+* Random selection: With the intuition that picking points randomly works as well
+* Least recently trained: With the intuition that the first learned will be the first forgotten

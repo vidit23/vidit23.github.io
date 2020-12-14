@@ -6,6 +6,7 @@ tags:
 - Swift
 - WatchConnectivity
 - Kafka
+- Django
 date: "2020-10-29T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).
@@ -16,10 +17,10 @@ image:
   focal_point: Smart
 
 links:
-- icon: twitter
+- icon: github
   icon_pack: fab
-  name: Follow
-  url: https://twitter.com/georgecushen
+  name: Code Repository
+  url: https://github.com/vidit23/AppEase
 url_code: ""
 url_pdf: ""
 url_slides: ""
@@ -45,6 +46,8 @@ Limited by the capabilities of the Apple Watch, we could not stream data directl
 
  We made a Kafka consumer in Python which runs on the server and constantly reads messages from the queue and writes it to the SQLite DB. [[code]](https://github.com/vidit23/AppEase/blob/main/kafkaConsumer.py). We then extended the platform to help show users a graph of their activity and heart-rate which can help doctors monitor their patients.
 
- Finally, we built in a notification system that would detect anomalies in user behavior using the acquired user information, current heart-rate, and activity data which urged users to play our designed games or listen to calming music within the app to distract them.
+ Finally, we built in a notification system that would detect anomalies in user behavior using the acquired user information, current heart-rate, and activity data which urged users to play our designed games or listen to calming music within the app to distract them. It also urges them to call help if needed.
+
+ This was an amazing learning experience and my first project building a Mobile Application. 
 
 
